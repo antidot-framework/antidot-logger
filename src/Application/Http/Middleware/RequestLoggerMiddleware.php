@@ -21,7 +21,7 @@ class RequestLoggerMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->logger->info(\json_encode([
+        $this->logger->debug(\json_encode([
             'method' => $request->getMethod(),
             'target' => $request->getRequestTarget(),
             'headers' => $request->getHeaders(),
