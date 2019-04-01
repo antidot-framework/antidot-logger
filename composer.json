@@ -7,7 +7,7 @@
         "psr-15"
     ],
     "type": "library",
-    "license": "MIT",
+    "license": "BSD-2.0",
     "authors": [
         {
             "name": "kpicaza",
@@ -16,22 +16,24 @@
     ],
     "require": {
         "php": "^7.2.13",
-        "psr/http-server-middleware": "^1.0"
+        "psr/http-server-middleware": "^1.0",
+        "psr/log": "^1.1"
     },
     "require-dev": {
         "phpro/grumphp": "^0.15.0",
         "phpstan/phpstan": "^0.11.5",
         "phpunit/phpunit": "^8.0",
-        "squizlabs/php_codesniffer": "^3.4"
+        "squizlabs/php_codesniffer": "^3.4",
+        "wshafer/psr11-monolog": "2.1.*"
     },
     "autoload": {
         "psr-4": {
-            "Antidot\\": "src"
+            "Antidot\\Logger\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AntidotTest\\": "test"
+            "AntidotTest\\Logger\\": "test"
         }
     },
     "scripts": {
@@ -46,5 +48,13 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "zf": {
+            "config-provider": "Antidot\\Logger\\Container\\Config\\ConfigProvider"
+        }
+    },
+    "suggest": {
+        "wshafer/psr11-monolog": "Allow using middleware with monolog implementation using MonologFactory class"
     }
 }
