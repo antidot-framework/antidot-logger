@@ -1,13 +1,13 @@
 {
-    "name": "antidot/logger",
+    "name": "antidot-fw/logger",
     "description": "Anti.Framework logger adapter library",
     "keywords": [
         "psr-3",
-        "psr-11",
-        "psr-15"
+        "psr-15",
+        "psr-17"
     ],
     "type": "library",
-    "license": "BSD-2.0",
+    "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "kpicaza",
