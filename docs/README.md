@@ -24,9 +24,9 @@ $app->pipe(\Antidot\Logger\Application\Http\Middleware\ExceptionLoggerMiddleware
 $app->pipe(\Antidot\Logger\Application\Http\Middleware\RequestLoggerMiddleware::class);
 ````
 
-### Using [Zend Config Aggregator](https://framework.zend.com/blog/2017-04-20-config-aggregator.html)
+### Using Zend Config Aggregator
 
-It installs the library automatically
+[Zend Config Aggregator](https://framework.zend.com/blog/2017-04-20-config-aggregator.html) installs the library automatically
 
 ### Using factory:
 
