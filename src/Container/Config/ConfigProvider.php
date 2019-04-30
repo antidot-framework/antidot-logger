@@ -6,6 +6,8 @@ namespace Antidot\Logger\Container\Config;
 
 use Antidot\Logger\Application\Http\Middleware\ExceptionLoggerMiddleware;
 use Antidot\Logger\Application\Http\Middleware\RequestLoggerMiddleware;
+use Antidot\Logger\Container\MonologFactory;
+use Psr\Log\LoggerInterface;
 
 class ConfigProvider
 {
@@ -16,6 +18,9 @@ class ConfigProvider
                 'invokables' => [
                     RequestLoggerMiddleware::class => RequestLoggerMiddleware::class,
                     ExceptionLoggerMiddleware::class => ExceptionLoggerMiddleware::class,
+                ],
+                'factories' => [
+                    LoggerInterface::class => MonologFactory::class,
                 ]
             ]
         ];
