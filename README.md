@@ -34,6 +34,48 @@ $app->pipe(\Antidot\Logger\Application\Http\Middleware\RequestLoggerMiddleware::
 
 It installs the library automatically
 
+To use both middlewares in Zend Expressive you need to create factory classes
+
+````php
+<?php
+// src/App/Container/ExceptionLoggerMiddlewareFactory.php
+
+namespace App\Container;
+
+use Antidot\Logger\Application\Http\Middleware\ExceptionLoggerMiddleware;
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+
+class ExceptionLoggerMiddlewareFactory
+{
+    public function __invoke(ContainerInterface $container)
+    {
+        return new ExceptionLoggerMiddleware($container->get(LoggerInterface::class));
+    }
+}
+
+````
+
+````php
+<?php
+// src/App/Container/RequestLoggerMiddlewareFactory.php
+
+namespace App\Container;
+
+use Antidot\Logger\Application\Http\Middleware\RequestLoggerMiddleware;
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+
+class RequestLoggerMiddlewareFactory
+{
+    public function __invoke(ContainerInterface $container)
+    {
+        return new RequestLoggerMiddleware($container->get(LoggerInterface::class));
+    }
+}
+
+````
+
 ### Using factory:
 
 #### Config
