@@ -10,10 +10,14 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
+use function get_class;
+use function json_encode;
+use function sprintf;
 
 class ExceptionLoggerMiddleware implements MiddlewareInterface
 {
-    private $logger;
+    private const UNEXPECTED_EXCEPTION_MESSAGE = 'Unexpected error occurred during %s exception message serialization.';
+    private LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger)
     {
@@ -25,12 +29,17 @@ class ExceptionLoggerMiddleware implements MiddlewareInterface
         try {
             return $handler->handle($request);
         } catch (Throwable $exception) {
-            $this->logger->error(\json_encode([
+            $message = json_encode([
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode(),
                 'file' => $exception->getFile(),
                 'line' => $exception->getLine()
-            ]));
+            ]);
+            $this->logger->error(
+                $message
+                    ? $message
+                    : sprintf(self::UNEXPECTED_EXCEPTION_MESSAGE, get_class($exception))
+            );
 
             throw $exception;
         }
