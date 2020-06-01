@@ -14,15 +14,13 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-            'dependencies' => [
-                'invokables' => [
-                    RequestLoggerMiddleware::class => RequestLoggerMiddleware::class,
-                    ExceptionLoggerMiddleware::class => ExceptionLoggerMiddleware::class,
-                ],
-                'factories' => [
-                    LoggerInterface::class => MonologFactory::class,
-                ]
-            ]
+            'services' => [
+                RequestLoggerMiddleware::class => RequestLoggerMiddleware::class,
+                ExceptionLoggerMiddleware::class => ExceptionLoggerMiddleware::class,
+            ],
+            'factories' => [
+                LoggerInterface::class => MonologFactory::class,
+            ],
         ];
     }
 }
