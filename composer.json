@@ -25,7 +25,8 @@
     },
     "require-dev": {
         "phpro/grumphp": "~0.17 || ~1.0",
-        "phpstan/phpstan": "^0.11.5 || ^0.12.0",
+        "infection/infection": "^0.21.0",
+        "phpstan/phpstan": "^0.12.0",
         "phpunit/phpunit": "^8.0 || ^9.0",
         "squizlabs/php_codesniffer": "^3.4",
         "wshafer/psr11-monolog": "@dev"
@@ -44,12 +45,14 @@
         "check-all": [
             "@test",
             "@cs-check",
-            "@inspect"
+            "@inspect",
+            "@infection"
         ],
         "cs-check": "phpcs src --colors",
         "cs-fix": "phpcbf src --colors",
         "inspect": "phpstan analyse src -l7 --ansi",
-        "test": "phpunit --colors=always"
+        "test": "phpunit --colors=always",
+        "infection": "XDEBUG_MODE=coverage infection"
     },
     "config": {
         "sort-packages": true
