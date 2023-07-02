@@ -21,9 +21,6 @@ class ConfigProvider
                 RequestLoggerMiddleware::class => RequestLoggerMiddleware::class,
                 ExceptionLoggerMiddleware::class => ExceptionLoggerMiddleware::class,
             ],
-            'factories' => [
-                LoggerInterface::class => MonologFactory::class,
-            ],
         ];
     }
 }

@@ -35,8 +35,7 @@ class RequestLoggerMiddleware implements MiddlewareInterface
 
         $this->logger->debug(
             $message
-                ? $message
-                : sprintf(self::UNEXPECTED_REQUEST_MESSAGE, get_class($request))
+                ?: sprintf(self::UNEXPECTED_REQUEST_MESSAGE, get_class($request))
         );
 
         return $handler->handle($request);
