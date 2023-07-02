@@ -1,10 +1,10 @@
 Antidot Logger
 ==============
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/build.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/build-status/master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/?branch=2.x.x)
+[![Code Coverage](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/?branch=2.x.x)
+[![Build Status](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/build.png?b=master)](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/build-status/2.x.x)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/antidot-framework/antidot-logger/badges/code-intelligence.svg?b=2.x.x)](https://scrutinizer-ci.com/code-intelligence)
 ![Maintainability](https://api.codeclimate.com/v1/badges/dd5349c19f7991e3fa95/maintainability)
 
 Application PSR-15 logger middleware:
@@ -74,24 +74,4 @@ class RequestLoggerMiddlewareFactory
     }
 }
 
-````
-
-### Using factory:
-
-#### Config
-
-See [wshafer/psr11-monolog](https://github.com/wshafer/psr11-monolog) for complete config reference, it allows using some different handlers
-
-#### factory
-
-````php
-<?php
-
-use Antidot\Logger\Container\MonologFactory;
-use Psr\Log\LoggerInterface;
-
-$factory = new MonologFactory();
-
-$logger = $factory->__invoke($container);
-$container->set(LoggerInterface::class, $logger);
 ````
