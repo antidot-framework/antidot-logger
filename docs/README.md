@@ -28,7 +28,7 @@ $app->pipe(\Antidot\Logger\Application\Http\Middleware\RequestLoggerMiddleware::
 
 [Zend Config Aggregator](https://framework.zend.com/blog/2017-04-20-config-aggregator.html) installs the library automatically
 
-To use both middlewares in Zend Expressive you need to create factory classes
+To use both middlewares in Zend Expressive you need to create factory classes, and at least a LoggerInterface implementation.
 
 ````php
 <?php
@@ -66,24 +66,4 @@ class RequestLoggerMiddlewareFactory
     }
 }
 
-````
-
-### Using factory:
-
-#### Config
-
-See [wshafer/psr11-monolog](https://github.com/wshafer/psr11-monolog) for complete config reference, it allows using some different handlers
-
-#### factory
-
-````php
-<?php
-
-use Antidot\Logger\Container\MonologFactory;
-use Psr\Log\LoggerInterface;
-
-$factory = new MonologFactory();
-
-$logger = $factory->__invoke($container);
-$container->set(LoggerInterface::class, $logger);
 ````
